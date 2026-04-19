@@ -25,6 +25,9 @@ public class HelloEdpController {
 
     @GetMapping(value = "/env")
     public Map<String, String> env() {
-        return System.getenv();
+        Map<String, String> result = new java.util.HashMap<>(System.getenv());
+        result.put("application.properties.from.configmap", propertiesFromConfigmap);
+        result.put("application.secret.properties.from.secret", secretPropertiesFromSecret);
+        return result;
     }
 }
