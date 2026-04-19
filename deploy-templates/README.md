@@ -25,6 +25,7 @@ A Helm chart for Kubernetes
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| envFrom | list | `[{"configMapRef":{"name":"cm-extra-env"}},{"secretRef":{"name":"secret-extra-env"}}]` | envFrom sources to inject environment variables from ConfigMap and Secret |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"backend-parameters"` |  |
@@ -64,9 +65,5 @@ A Helm chart for Kubernetes
 | volumeMounts[1].readOnly | bool | `true` |  |
 | volumes[0].configMap.name | string | `"cm-extra-config"` |  |
 | volumes[0].name | string | `"cm-extra-config"` |  |
-| volumes[1].configMap.name | string | `"cm-extra-env"` |  |
-| volumes[1].name | string | `"cm-extra-env"` |  |
-| volumes[2].name | string | `"secret-extra-config"` |  |
-| volumes[2].secret.secretName | string | `"secret-extra-config"` |  |
-| volumes[3].name | string | `"secret-extra-env"` |  |
-| volumes[3].secret.secretName | string | `"secret-extra-env"` |  |
+| volumes[1].name | string | `"secret-extra-config"` |  |
+| volumes[1].secret.secretName | string | `"secret-extra-config"` |  |

@@ -94,15 +94,9 @@ volumes:
   - name: cm-extra-config
     configMap:
       name: cm-extra-config
-  - name: cm-extra-env
-    configMap:
-      name: cm-extra-env
   - name: secret-extra-config
     secret:
       secretName: secret-extra-config
-  - name: secret-extra-env
-    secret:
-      secretName: secret-extra-env
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
@@ -112,6 +106,13 @@ volumeMounts:
   - name: secret-extra-config
     mountPath: /secret-config
     readOnly: true
+
+# -- envFrom sources to inject environment variables from ConfigMap and Secret
+envFrom:
+  - configMapRef:
+      name: cm-extra-env
+  - secretRef:
+      name: secret-extra-env
 
 # -- https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector
 nodeSelector: {}
