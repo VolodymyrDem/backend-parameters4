@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-extra-env
+data:
+  SERVER_PORT: "8080"
+  LOGGING_LEVEL_ROOT: "DEBUG"

@@ -25,7 +25,6 @@ A Helm chart for Kubernetes
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| configMapName | string | `"application-properties-configmap"` | Name of the ConfigMap that contains application.properties |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"backend-parameters"` |  |
@@ -49,7 +48,6 @@ A Helm chart for Kubernetes
 | readinessProbe.tcpSocket.port | string | `"http"` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
-| secretName | string | `"application-secret-properties-secret"` | Name of the Secret that contains application.secret.properties |
 | securityContext | object | `{}` |  |
 | service.port | int | `8080` |  |
 | service.type | string | `"ClusterIP"` |  |
@@ -59,12 +57,16 @@ A Helm chart for Kubernetes
 | serviceAccount.name | string | `""` | The name of the service account to use. If not set and create is true, a name is generated using the fullname template |
 | tolerations | list | `[]` | https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/ |
 | volumeMounts[0].mountPath | string | `"/config"` |  |
-| volumeMounts[0].name | string | `"config-volume"` |  |
+| volumeMounts[0].name | string | `"cm-extra-config"` |  |
 | volumeMounts[0].readOnly | bool | `true` |  |
 | volumeMounts[1].mountPath | string | `"/secret-config"` |  |
-| volumeMounts[1].name | string | `"secret-config-volume"` |  |
+| volumeMounts[1].name | string | `"secret-extra-config"` |  |
 | volumeMounts[1].readOnly | bool | `true` |  |
-| volumes[0].configMap.name | string | `"application-properties-configmap"` |  |
-| volumes[0].name | string | `"config-volume"` |  |
-| volumes[1].name | string | `"secret-config-volume"` |  |
-| volumes[1].secret.secretName | string | `"application-secret-properties-secret"` |  |
+| volumes[0].configMap.name | string | `"cm-extra-config"` |  |
+| volumes[0].name | string | `"cm-extra-config"` |  |
+| volumes[1].configMap.name | string | `"cm-extra-env"` |  |
+| volumes[1].name | string | `"cm-extra-env"` |  |
+| volumes[2].name | string | `"secret-extra-config"` |  |
+| volumes[2].secret.secretName | string | `"secret-extra-config"` |  |
+| volumes[3].name | string | `"secret-extra-env"` |  |
+| volumes[3].secret.secretName | string | `"secret-extra-env"` |  |

@@ -1,9 +1,17 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.configMapName }}
+  name: cm-extra-config
   labels:
     {{- include "backend-parameters.labels" . | nindent 4 }}
 data:
   application.properties: |
     application.properties.from.configmap=value-from-configmap
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-extra-env
+  labels:
+    {{- include "backend-parameters.labels" . | nindent 4 }}
+data: {}

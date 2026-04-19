@@ -89,27 +89,27 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-# -- Name of the ConfigMap that contains application.properties
-configMapName: application-properties-configmap
-
-# -- Name of the Secret that contains application.secret.properties
-secretName: application-secret-properties-secret
-
 # Additional volumes on the output Deployment definition.
 volumes:
-  - name: config-volume
+  - name: cm-extra-config
     configMap:
-      name: application-properties-configmap  # matches configMapName above
-  - name: secret-config-volume
+      name: cm-extra-config
+  - name: cm-extra-env
+    configMap:
+      name: cm-extra-env
+  - name: secret-extra-config
     secret:
-      secretName: application-secret-properties-secret  # matches secretName above
+      secretName: secret-extra-config
+  - name: secret-extra-env
+    secret:
+      secretName: secret-extra-env
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
-  - name: config-volume
+  - name: cm-extra-config
     mountPath: /config
     readOnly: true
-  - name: secret-config-volume
+  - name: secret-extra-config
     mountPath: /secret-config
     readOnly: true
 

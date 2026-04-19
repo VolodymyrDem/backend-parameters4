@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-extra-config
+data:
+  ENV_VAR1: "custom_value_from_configmap"
+  application.properties: |
+    database.url=jdbc:postgresql://localhost:5432/mydb
+    database.user=admin
+    database.password=password
