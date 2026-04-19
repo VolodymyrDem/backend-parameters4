@@ -91,19 +91,19 @@ autoscaling:
 
 # Additional volumes on the output Deployment definition.
 volumes:
-  - name: config-volume
+  - name: cm-extra-config
     configMap:
-      name: application-properties-configmap
-  - name: secret-config-volume
+      name: cm-extra-config
+  - name: secret-extra-config
     secret:
-      secretName: application-secret-properties-secret
+      secretName: secret-extra-config
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
-  - name: config-volume
+  - name: cm-extra-config
     mountPath: /config
     readOnly: true
-  - name: secret-config-volume
+  - name: secret-extra-config
     mountPath: /secret-config
     readOnly: true
 

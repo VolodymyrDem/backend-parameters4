@@ -57,12 +57,12 @@ A Helm chart for Kubernetes
 | serviceAccount.name | string | `""` | The name of the service account to use. If not set and create is true, a name is generated using the fullname template |
 | tolerations | list | `[]` | https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/ |
 | volumeMounts[0].mountPath | string | `"/config"` |  |
-| volumeMounts[0].name | string | `"config-volume"` |  |
+| volumeMounts[0].name | string | `"cm-extra-config"` |  |
 | volumeMounts[0].readOnly | bool | `true` |  |
 | volumeMounts[1].mountPath | string | `"/secret-config"` |  |
-| volumeMounts[1].name | string | `"secret-config-volume"` |  |
+| volumeMounts[1].name | string | `"secret-extra-config"` |  |
 | volumeMounts[1].readOnly | bool | `true` |  |
-| volumes[0].configMap.name | string | `"application-properties-configmap"` |  |
-| volumes[0].name | string | `"config-volume"` |  |
-| volumes[1].name | string | `"secret-config-volume"` |  |
-| volumes[1].secret.secretName | string | `"application-secret-properties-secret"` |  |
+| volumes[0].configMap.name | string | `"cm-extra-config"` |  |
+| volumes[0].name | string | `"cm-extra-config"` |  |
+| volumes[1].name | string | `"secret-extra-config"` |  |
+| volumes[1].secret.secretName | string | `"secret-extra-config"` |  |

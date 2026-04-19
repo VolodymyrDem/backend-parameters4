@@ -36,6 +36,24 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: cm-extra-env
+            - secretRef:
+                name: secret-extra-env
+          env:
+            - name: BACKEND_PROFILES_ACTIVE
+              value: "dev"
+            - name: ENV_VAR1
+              valueFrom:
+                configMapKeyRef:
+                  name: cm-extra-config
+                  key: ENV_VAR1
+            - name: ENV_VAR4
+              valueFrom:
+                secretKeyRef:
+                  name: secret-extra-config
+                  key: ENV_VAR4
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
