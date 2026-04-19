@@ -77,10 +77,15 @@ resources: {}
 livenessProbe:
   tcpSocket:
     port: http
+  initialDelaySeconds: 60
+  periodSeconds: 10
+  failureThreshold: 5
 readinessProbe:
   tcpSocket:
     port: http
-  initialDelaySeconds: 20
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  failureThreshold: 5
 
 autoscaling:
   enabled: false
