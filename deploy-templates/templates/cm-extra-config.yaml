@@ -6,6 +6,5 @@ metadata:
     {{- include "backend-parameters.labels" . | nindent 4 }}
 data:
   ENV_VAR1: "value1"
-  application.properties: |
-    application.properties.from.configmap=value_from_configmap
+  application.properties: "application.properties.from.configmap=server.port=8080\\nlogging.level.root=INFO\\n\n"
 
