@@ -89,14 +89,20 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
+# -- Name of the ConfigMap that contains application.properties
+configMapName: application-properties-configmap
+
+# -- Name of the Secret that contains application.secret.properties
+secretName: application-secret-properties-secret
+
 # Additional volumes on the output Deployment definition.
 volumes:
   - name: config-volume
     configMap:
-      name: application-properties-configmap
+      name: application-properties-configmap  # matches configMapName above
   - name: secret-config-volume
     secret:
-      secretName: application-secret-properties-secret
+      secretName: application-secret-properties-secret  # matches secretName above
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:

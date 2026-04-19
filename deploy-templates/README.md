@@ -25,6 +25,7 @@ A Helm chart for Kubernetes
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| configMapName | string | `"application-properties-configmap"` | Name of the ConfigMap that contains application.properties |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"backend-parameters"` |  |
@@ -48,6 +49,7 @@ A Helm chart for Kubernetes
 | readinessProbe.tcpSocket.port | string | `"http"` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
+| secretName | string | `"application-secret-properties-secret"` | Name of the Secret that contains application.secret.properties |
 | securityContext | object | `{}` |  |
 | service.port | int | `8080` |  |
 | service.type | string | `"ClusterIP"` |  |

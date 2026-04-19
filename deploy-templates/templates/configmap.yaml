@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.configMapName }}
+  labels:
+    {{- include "backend-parameters.labels" . | nindent 4 }}
+data:
+  application.properties: |
+    application.properties.from.configmap=value-from-configmap
