@@ -1,0 +1,12 @@
+apiVersion: v2.edp.epam.com/v1
+kind: Codebase
+metadata:
+  name: backend-parameters
+spec:
+  buildTool: maven
+  framework: java17
+  lang: java
+  type: application
+  # Ось тут ми прибираємо префікс "github-"
+  reviewStrategy: maven-java17-app-review
+  buildStrategy: maven-java17-app-build-semver
